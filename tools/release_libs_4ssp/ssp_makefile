@@ -1,0 +1,6 @@
+lite-wakeup:
+	./res2src_linux --directory res > resource.c
+	${CC} -I. -o $@ lwakeup.c resource.c -L. -llite-wakeup_export -lm
+
+clean:
+	rm -fr lite-wakeup resource.c

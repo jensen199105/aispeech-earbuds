@@ -1,0 +1,7 @@
+python脚本采用 python3.x 版本，和 python2.x 版本不兼容。
+
+release_libs_4ssp.sh 使用 pyinstaller 将 python 脚本转换成可执行文件，
+因此要先确保已经安装了 pyinstaller 工具。
+安装命令如下:
+pip install pyinstaller
+

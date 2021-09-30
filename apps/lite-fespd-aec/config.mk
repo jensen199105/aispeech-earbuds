@@ -1,0 +1,121 @@
+#
+# config for specific functions
+#
+ifeq (${CONFIG_LITE-FESPD_HEADSET}, y)
+CFLAGS += -DENABLE_LUDA_FOR_HEADSET
+endif
+
+ifeq (${CONFIG_LITE-FESPD_MOBILE}, y)
+CFLAGS += -DENABLE_LUDA_FOR_MOBILE
+endif
+
+ifeq (${CONFIG_LITE-FESPD_HOME}, y)
+CFLAGS += -DENABLE_LUDA_FOR_HOME
+endif
+
+ifeq (${CONFIG_RDMA_FFT_256}, y)
+CFLAGS  += -DRDMA_FFT_256
+else
+CFLAGS  += -DRDMA_FFT_512
+endif
+
+# The output data is taken from gscProcessMobile(...) directly, not from dataPop(...).
+ifeq (${CONFIG_LITE-FESPD_FREQOUT_DIRECT}, y)
+CFLAGS += -DLUDA_SUPPORT_FREQOUT_DIRECT
+endif
+
+ifeq (${CONFIG_WAKEUP_NCHANNEL}, y)
+CFLAGS += -DWAKEUP_NCHANNEL
+endif
+
+ifeq (${CONFIG_GSC_HALF_VAD}, y)
+CFLAGS += -DGSC_ENABLE_HALF_VAD
+endif
+
+ifneq (${CONFIG_WAKEUP_USE_VAD}, y)
+CFLAGS += -DWKP_VAD_DISABLE
+endif
+
+ifeq (${CONFIG_WAKEUP_DICT_PHONEME}, y)
+CFLAGS += -DWAKEUP_DICT_PHONEME
+endif
+
+ifeq (${CONFIG_WAKEUP_DICT_CHAR}, y)
+CFLAGS += -DWAKEUP_DICT_CHAR
+endif
+
+ifeq (${CONFIG_WAKEUP_DICT_WORD}, y)
+CFLAGS += -DWAKEUP_DICT_WORD
+endif
+
+ifeq (${CONFIG_WAKEUP_NN_DNN}, y)
+CFLAGS += -DWAKEUP_NN_DNN
+endif
+
+ifeq (${CONFIG_WAKEUP_NN_FSMN}, y)
+CFLAGS += -DWAKEUP_NN_FSMN
+endif
+
+ifeq (${CONFIG_WAKEUP_FBANK_CHANS24}, y)
+CFLAGS += -DWAKEUP_FBANK24
+endif
+
+ifeq (${CONFIG_WAKEUP_FBANK_CHANS40}, y)
+CFLAGS += -DWAKEUP_FBANK40
+endif
+
+ifeq (${CONFIG_WAKEUP_FBANK_CHANS40}, y)
+CFLAGS += -DWAKEUP_FBANK_CHANS_MAX=40
+else
+ifeq (${CONFIG_WAKEUP_FBANK_CHANS24}, y)
+CFLAGS += -DWAKEUP_FBANK_CHANS_MAX=24
+endif
+endif
+
+ifeq (${CONFIG_WAKEUP_HAMMING400}, y)
+CFLAGS += -DWAKEUP_HAMMING400
+endif
+
+ifeq (${CONFIG_WAKEUP_HAMMING480}, y)
+CFLAGS += -DWAKEUP_HAMMING480
+endif
+
+ifeq (${CONFIG_WAKEUP_HANNING512}, y)
+CFLAGS += -DWAKEUP_HANNING512
+endif
+
+ifeq (${CONFIG_WAKEUP_XCHECK}, y)
+CFLAGS += -DWAKEUP_XCHECK
+endif
+
+ifeq (${CONFIG_WAKEUP_XTERM}, y)
+CFLAGS += -DWAKEUP_XTERM
+endif
+
+ifeq (${CONFIG_WAKEUP_DELAY}, y)
+CFLAGS += -DWAKEUP_DELAY
+endif
+
+ifeq (${CONFIG_WAKEUP_DUR_PENALTY}, y)
+CFLAGS += -DWAKEUP_DUR_PENALTY
+endif
+
+ifeq (${CONFIG_WAKEUP_RESET}, y)
+CFLAGS += -DWAKEUP_RESET
+endif
+
+ifeq (${CONFIG_WAKEUP_DUMP_SCORE}, y)
+CFLAGS += -DWAKEUP_DUMP_SCORE
+endif
+
+#
+# lite-fespd-aec: support fixed version only!
+#
+#ifeq (${CONFIG_FLOATING_RELEASE}, y)
+#CFLAGS += -DFLOATING_RELEASE
+#endif
+
+ifeq (${CONFIG_PLATFORM_LE}, y)
+CFLAGS += -D__PLATFORM_LE__
+endif
+
