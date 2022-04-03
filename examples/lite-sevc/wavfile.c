@@ -42,10 +42,10 @@ int wavFileHeadCHeck(struct wavfile_header *pHead)
     char acWaveTags[8];
     char acFmtTags[8];
     char acDataTags[8];
-    strncpy(acRiffTags, "RIFF", 4);
-    strncpy(acWaveTags, "WAVE", 4);
-    strncpy(acFmtTags, "fmt ", 4);
-    strncpy(acDataTags, "data", 4);
+    memcpy(acRiffTags, "RIFF", 4);
+    memcpy(acWaveTags, "WAVE", 4);
+    memcpy(acFmtTags, "fmt ", 4);
+    memcpy(acDataTags, "data", 4);
 
     if (0 != memcmp(pHead->riff_tag, "RIFF", 4))
     {
@@ -91,10 +91,10 @@ FILE *wavfile_write_open(const char *filename, int chans, int sample_rate)
     int bits_per_sample = 16;
     FILE *fp = NULL;
     struct wavfile_header header;
-    strncpy(header.riff_tag, "RIFF", 4);
-    strncpy(header.wave_tag, "WAVE", 4);
-    strncpy(header.fmt_tag, "fmt ", 4);
-    strncpy(header.data_tag, "data", 4);
+    memcpy(header.riff_tag, "RIFF", 4);
+    memcpy(header.wave_tag, "WAVE", 4);
+    memcpy(header.fmt_tag, "fmt ", 4);
+    memcpy(header.data_tag, "data", 4);
     header.riff_length = 0;
     header.fmt_length = 16;
     header.audio_format = 1;

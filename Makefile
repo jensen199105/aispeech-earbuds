@@ -6,8 +6,8 @@ ROOT := $(shell pwd)
 export FORBID_SWITCH
 
 include lite-fesp.mk
-$(shell `.githooks/githook_setup.sh`)
-$(shell `./resource.sh`)
+# $(shell `.githooks/githook_setup.sh`)
+# $(shell `./resource.sh`)
 
 
 
